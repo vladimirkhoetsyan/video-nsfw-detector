@@ -6,8 +6,8 @@ A command-line tool for detecting NSFW content in videos using computer vision t
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/nsfw-video-detector.git
-cd nsfw-video-detector
+git clone https://github.com/vladimirkhoetsyan/video-nsfw-detector.git
+cd video-nsfw-detector
 ```
 
 2. Create and activate a virtual environment:
