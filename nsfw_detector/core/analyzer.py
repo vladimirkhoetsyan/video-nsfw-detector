@@ -8,8 +8,8 @@ from typing import List, Tuple
 class NSFWAnalyzer:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
-        self.base_threshold = 0.55  # Base threshold for general detection
-        self.strict_threshold = 0.65  # Stricter threshold for sensitive content
+        self.base_threshold = 0.5  # Base threshold for general detection
+        self.strict_threshold = 0.6  # Default threshold for unsafe content
         self.skin_ycrcb_min = np.array([0, 135, 85], np.uint8)
         self.skin_ycrcb_max = np.array([255, 180, 135], np.uint8)
         self.skin_hsv_min = np.array([0, 15, 0], np.uint8)
@@ -115,7 +115,7 @@ class NSFWAnalyzer:
             
             # Apply thresholds for classification
             base_threshold = 0.5  # Threshold for questionable content
-            strict_threshold = 0.86  # Increased threshold for unsafe content
+            strict_threshold = 0.6  # Default threshold for unsafe content
             
             if normalized_score < base_threshold:
                 return 0.3  # Safe
@@ -171,6 +171,6 @@ class NSFWAnalyzer:
     def is_frame_unsafe(self, score: float) -> bool:
         """
         Determine if a frame is unsafe based on its score.
-        Uses a threshold of 0.84 to minimize false positives.
+        Uses the default threshold of 0.6 to classify unsafe content.
         """
-        return score > 0.84  # Threshold for unsafe content classification
+        return score > 0.6  # Default threshold for unsafe content classification

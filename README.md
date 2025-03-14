@@ -145,8 +145,8 @@ class NSFWAnalyzer:
 ### 2. Content Classification Thresholds
 
 The tool uses the following thresholds for classification:
-- Scores > 0.84: Unsafe content
-- Scores between 0.5 and 0.84: Questionable content
+- Scores > 0.6: Unsafe content
+- Scores between 0.5 and 0.6: Questionable content
 - Scores < 0.5: Safe content
 
 To adjust these thresholds, modify the score calculation in `analyze_frame()`:
@@ -158,12 +158,7 @@ def analyze_frame(self, frame_path: str) -> float:
     
     # Adjust these values to change sensitivity
     base_threshold = 0.5     # Threshold for questionable content
-    strict_threshold = 0.84  # Threshold for unsafe content
-    
-    # Adjust weights for different factors
-    skin_weight = 2.5       # Weight for skin detection
-    region_weight = 1.5     # Weight for region analysis
-    center_weight = 1.2     # Weight for center-region priority
+    strict_threshold = 0.6   # Default threshold for unsafe content
 ```
 
 ### 3. Frame Extraction Parameters
